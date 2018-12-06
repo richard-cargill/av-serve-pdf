@@ -1,0 +1,24 @@
+{
+  "name": "av-serve-pdf",
+  "version": "1.0.0",
+  "main": "./src/index.js",
+  "scripts": {
+    "dev": "micro-dev",
+    "start": "micro",
+    "lint": "xo",
+    "test": "npm run lint && ava"
+  },
+  "license": "MIT",
+    "xo": {     "extends": "prettier"   },
+  "dependencies": {
+    "micro": "latest"
+  },
+  "devDependencies": {
+    "ava": "^0.25.0",
+    "eslint-config-prettier": "^3.3.0",
+    "micro": "^9.3.3",
+    "micro-dev": "^3.0.0",
+    "prettier": "^1.15.3",
+    "xo": "^0.23.0"
+  }
+}

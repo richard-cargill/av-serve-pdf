@@ -10,15 +10,15 @@ module.exports = async (req, res) => {
   res.setHeader("Access-Control-Request-Method", ALLOWED_HTTP_METHOD);
   const {method} = req;
 
-  if (method !== ALLOWED_HTTP_METHOD) {
-    send(res, 405);
-  }
+  if (method === ALLOWED_HTTP_METHOD) {
+    const user = auth(req);
 
-  const user = auth(req);
-
-  if (user.pass === USER_PASS) {
-    send(res, 200, 'Success');
+    if (user.pass === USER_PASS) {
+      send(res, 200, 'Success');
+    } else {
+      send(res, 401);
+    }
   } else {
-    send(res, 401);
+    send(res, 405);
   }
 }

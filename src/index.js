@@ -1,3 +1,5 @@
+const fs = require('fs');
+const mime = require('mime');
 const {send} = require('micro');
 const auth = require('basic-auth');
 
@@ -8,13 +10,27 @@ const USER_PASS = process.env.password;
 
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Request-Method', ALLOWED_HTTP_METHOD);
-  const {method} = req;
+  const {method, url} = req;
 
   if (method === ALLOWED_HTTP_METHOD) {
     const user = auth(req);
+    const file = `./tmp/${url}`;
 
     if (user.pass === USER_PASS) {
-      send(res, 200, 'Success');
+      fs.access(file, fs.constants.F_OK, error => {
+        if (error) {
+          send(res, 404);
+        }
+
+        fs.readFile(file, (error, data) => {
+          if (error) {
+            send(res, 500);
+          } else {
+            res.setHeader('Content-type', mime.getType(file));
+            send(res, 200, data);
+          }
+        });
+      });
     } else {
       send(res, 401);
     }

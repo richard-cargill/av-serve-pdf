@@ -10,14 +10,15 @@
   },
   "license": "MIT",
   "xo": {
-    "space":  true
+    "space": true
   },
   "dependencies": {
     "base-64": "^0.1.0",
     "basic-auth": "^2.0.1",
     "dotenv": "^6.2.0",
     "js-base64": "^2.4.9",
-    "micro": "latest"
+    "micro": "latest",
+    "mime": "^2.4.0"
   },
   "devDependencies": {
     "ava": "^0.25.0",

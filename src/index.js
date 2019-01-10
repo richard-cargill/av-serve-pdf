@@ -7,7 +7,7 @@ const ALLOWED_HTTP_METHOD = 'POST';
 const USER_PASS = process.env.password;
 
 module.exports = async (req, res) => {
-  res.setHeader("Access-Control-Request-Method", ALLOWED_HTTP_METHOD);
+  res.setHeader('Access-Control-Request-Method', ALLOWED_HTTP_METHOD);
   const {method} = req;
 
   if (method === ALLOWED_HTTP_METHOD) {
@@ -21,4 +21,4 @@ module.exports = async (req, res) => {
   } else {
     send(res, 405);
   }
-}
+};

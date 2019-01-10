@@ -10,7 +10,7 @@
   },
   "license": "MIT",
   "xo": {
-    "extends": "prettier"
+    "space":  true
   },
   "dependencies": {
     "base-64": "^0.1.0",
